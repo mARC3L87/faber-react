@@ -1,0 +1,45 @@
+@import '../../styles/settings.scss';
+
+.nav-container {
+  width: 100%;
+  background-color: $dark;
+  height: 50%;
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $light;
+    margin: 0 80px;
+    .logo {
+      font-size: $text-heading;
+      border: 2px solid $light;
+      border-radius: 20%;
+      padding: 5px 10px;
+      transition: color, border-color 250ms;
+      &:hover {
+        cursor: pointer;
+        color: $orange;
+        border-color: $orange;
+      }
+    }
+    ul {
+      display: flex;
+      padding: 0;
+      list-style-type: none;
+      li {
+        margin: 0 10px;
+        font-family: $text-font;
+        font-size: $text-regular;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: color 200ms;
+        &:hover {
+          text-decoration: underline;
+          text-underline-offset: 5px;
+          cursor: pointer;
+          color: $orange;
+        }
+      }
+    }
+  }
+}
