@@ -1,14 +1,32 @@
+import { NavLink, Link } from 'react-router-dom';
 import './Navigation.scss';
 
 const Navigation = () => {
   return (
     <div className='nav-container'>
       <nav className='navigation'>
-        <h1 className='logo'>Faber</h1>
+        <Link className='logo-link' to='/'>
+          <h1 className='logo'>Faber</h1>
+        </Link>
         <ul>
-          <li>Oferta</li>
-          <li>Galeria</li>
-          <li>Kontakt</li>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : 'nav-link')}
+            to='/oferta'
+          >
+            <li>Oferta</li>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : 'nav-link')}
+            to='/galeria'
+          >
+            <li>Galeria</li>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : 'nav-link')}
+            to='/kontakt'
+          >
+            <li>Kontakt</li>
+          </NavLink>
         </ul>
       </nav>
     </div>

@@ -8,37 +8,53 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: $light;
     margin: 0 80px;
-    .logo {
-      font-size: $text-heading;
-      border: 2px solid $light;
-      border-radius: 20%;
-      padding: 5px 10px;
-      transition: color, border-color 250ms;
-      &:hover {
-        cursor: pointer;
-        color: $orange;
-        border-color: $orange;
+    .logo-link {
+      text-decoration: none;
+      .logo {
+        color: $light;
+        font-size: $text-heading;
+        border: 2px solid $light;
+        border-radius: 20%;
+        padding: 5px 10px;
+        transition: color, border-color 250ms;
+        &:hover {
+          cursor: pointer;
+          color: $orange;
+          border-color: $orange;
+        }
       }
     }
     ul {
       display: flex;
       padding: 0;
       list-style-type: none;
-      li {
+      .nav-link {
+        text-decoration: none;
+        li {
+          margin: 0 10px;
+          font-family: $text-font;
+          font-size: $text-regular;
+          color: $light;
+          font-weight: bold;
+          text-transform: uppercase;
+          transition: color 200ms;
+          &:hover {
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            cursor: pointer;
+            color: $orange;
+          }
+        }
+      }
+      .active {
+        color: $orange;
+        text-decoration: none;
         margin: 0 10px;
         font-family: $text-font;
         font-size: $text-regular;
         font-weight: bold;
         text-transform: uppercase;
-        transition: color 200ms;
-        &:hover {
-          text-decoration: underline;
-          text-underline-offset: 5px;
-          cursor: pointer;
-          color: $orange;
-        }
       }
     }
   }

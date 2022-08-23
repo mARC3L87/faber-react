@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Hero.scss';
 import faber1 from '../../assets/faber-2.png';
 
@@ -13,6 +14,9 @@ const Hero = () => {
           tempora saepe expedita distinctio quae esse eius nulla eum sint
           laborum fugiat?
         </p>
+        <Link to='oferta' className='btn-offer'>
+          Oferta
+        </Link>
       </div>
     </section>
   );

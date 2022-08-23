@@ -1,7 +1,7 @@
 @import '../../styles/settings.scss';
 .hero-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   img {
     position: relative;
@@ -11,18 +11,44 @@
   }
   .hero-content {
     position: absolute;
-    border: 1px solid white;
-    width: 500px;
+    max-width: 500px;
     margin: 0 50px;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     h1 {
-      font-size: $text-heading;
+      font-size: $text-hero;
       font-weight: bold;
       color: $light;
+      text-align: center;
+      line-height: 1.8;
+      margin-bottom: 0;
     }
     p {
       color: $light;
+      font-size: $text-regular;
+      line-height: 1.5;
+    }
+    .btn-offer {
+      width: 150px;
+      height: 50px;
+      text-decoration: none;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 25px;
+      background-color: $orange;
+      color: $light;
+      font-family: $text-font;
+      font-size: $text-regular;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      transition: background-color 200ms;
+      &:hover {
+        background-color: $dark-orange;
+      }
     }
   }
 }
