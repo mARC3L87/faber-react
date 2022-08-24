@@ -1,8 +1,15 @@
-import './Home.scss';
-import Hero from '../Hero/Hero';
 import { Fragment } from 'react';
+import { useAppSelector } from '../../app/hooks';
+import { selectData } from '../../features/dataSlice';
+import Hero from '../Hero/Hero';
+import ServiceCard from '../ServiceCard/ServiceCard';
+import './Home.scss';
 
 const Home = () => {
+  const data = useAppSelector(selectData);
+  console.log(data);
+  const dataImages = data.items.map((item) => item);
+  console.log(dataImages);
   return (
     <Fragment>
       <header>
@@ -17,6 +24,13 @@ const Home = () => {
           quis placerat. Curabitur nec pellentesque sem. Integer facilisis augue
           odio, et interdum erat efficitur at. Ut risus velit.
         </p>
+      </section>
+      <section className='intro-services'>
+        {data.serviceCategories.slice(0, 4).map((serviceCategory) => (
+          <div key={serviceCategory.id}>
+            <ServiceCard serviceCategory={serviceCategory} items={dataImages} />
+          </div>
+        ))}
       </section>
     </Fragment>
   );
