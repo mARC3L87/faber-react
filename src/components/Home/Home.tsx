@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
 import Hero from '../Hero/Hero';
@@ -7,9 +8,7 @@ import './Home.scss';
 
 const Home = () => {
   const data = useAppSelector(selectData);
-  console.log(data);
   const dataImages = data.items.map((item) => item);
-  console.log(dataImages);
   return (
     <Fragment>
       <header>
@@ -25,12 +24,20 @@ const Home = () => {
           odio, et interdum erat efficitur at. Ut risus velit.
         </p>
       </section>
-      <section className='intro-services'>
-        {data.serviceCategories.slice(0, 4).map((serviceCategory) => (
-          <div key={serviceCategory.id}>
-            <ServiceCard serviceCategory={serviceCategory} items={dataImages} />
-          </div>
-        ))}
+      <section className='intro-services-container'>
+        <div className='intro-services'>
+          {data.serviceCategories.slice(0, 4).map((serviceCategory) => (
+            <div key={serviceCategory.id}>
+              <ServiceCard
+                serviceCategory={serviceCategory}
+                items={dataImages}
+              />
+            </div>
+          ))}
+        </div>
+        <Link className='btn-fullOffer' to='oferta'>
+          Pełna oferta
+        </Link>
       </section>
     </Fragment>
   );

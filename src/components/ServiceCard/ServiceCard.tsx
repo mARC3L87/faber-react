@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import './ServiceCard.scss';
+
 interface Items {
   id: number;
   image: string;
@@ -17,11 +19,21 @@ const ServiceCard = ({ serviceCategory, items }: ServiceCardProps) => {
   const itemsProperties = items.find(
     (item) => item.category === serviceCategory.service
   );
-  console.log(itemsProperties?.category);
   return (
-    <div>
-      <h1>{serviceCategory.service}</h1>
-      <h1>{itemsProperties?.category}</h1>
+    <div className='card-wrapper'>
+      <Link
+        className='img-service-link'
+        to={`oferta/${serviceCategory.service}`}
+      >
+        <img
+          src={itemsProperties?.image}
+          alt={itemsProperties?.img_description}
+        />
+      </Link>
+
+      <Link className='category-link' to={`oferta/${serviceCategory.service}`}>
+        <p>{serviceCategory.service}</p>
+      </Link>
     </div>
   );
 };
