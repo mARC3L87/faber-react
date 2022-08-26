@@ -1,0 +1,13 @@
+@import '../../styles/settings.scss';
+
+.footer-container {
+  background-color: $dark;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  p {
+    margin: 0;
+    color: $light;
+  }
+}

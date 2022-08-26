@@ -39,6 +39,26 @@ const Home = () => {
           Pełna oferta
         </Link>
       </section>
+      <section className='intro-gallery'>
+        <div className='intro-img-first'>
+          <img
+            src={dataImages[12].image}
+            alt={dataImages[12].img_description}
+          />
+          <div className='img-content'>
+            <h4>Galeria zdjęć</h4>
+            <Link className='img-content-link' to='galeria'>
+              <p>Pokaż Wszystko</p>
+            </Link>
+          </div>
+        </div>
+        <div className='intro-img-second'>
+          <img
+            src={dataImages[13].image}
+            alt={dataImages[13].img_description}
+          />
+        </div>
+      </section>
     </Fragment>
   );
 };
