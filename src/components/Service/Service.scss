@@ -1,0 +1,74 @@
+@import '../../styles/settings.scss';
+
+.service-container {
+  display: flex;
+  margin: 50px 80px;
+  justify-content: space-between;
+  gap: 30px;
+  ul {
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    flex: 1;
+    .service-link {
+      text-decoration: none;
+      .service-list {
+        width: 100%;
+        color: $dark;
+        font-family: $text-font;
+        background-color: $grey;
+        font-weight: bold;
+        margin-bottom: 10px;
+        height: 50px;
+        padding-top: 15px;
+        text-align: center;
+        text-transform: capitalize;
+        transition: background-color, color 200ms;
+        &:hover {
+          background-color: $orange;
+          color: $light;
+        }
+        &.active {
+          background-color: $orange;
+          color: $light;
+        }
+      }
+    }
+  }
+  img {
+    height: 410px;
+    max-width: 100%;
+    object-fit: cover;
+    flex: 2;
+  }
+}
+.service-description-container {
+  display: flex;
+  flex-direction: row;
+  margin: 50px 80px;
+  gap: 30px;
+  .service-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $orange;
+    width: 400px;
+    flex: 1;
+    height: 150px;
+    p {
+      color: $light;
+      font-size: $text-regular;
+    }
+  }
+  .service-content {
+    width: 100%;
+    flex: 2;
+    & :first-child {
+      margin-top: 0;
+      font-size: $text-heading;
+    }
+  }
+}

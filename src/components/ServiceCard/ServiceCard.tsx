@@ -23,7 +23,7 @@ const ServiceCard = ({ serviceCategory, items }: ServiceCardProps) => {
     <div className='card-wrapper'>
       <Link
         className='img-service-link'
-        to={`oferta/${serviceCategory.service}`}
+        to={`/oferta/${serviceCategory.service}`}
       >
         <img
           src={itemsProperties?.image}
@@ -31,7 +31,7 @@ const ServiceCard = ({ serviceCategory, items }: ServiceCardProps) => {
         />
       </Link>
 
-      <Link className='category-link' to={`oferta/${serviceCategory.service}`}>
+      <Link className='category-link' to={`/oferta/${serviceCategory.service}`}>
         <p>{serviceCategory.service}</p>
       </Link>
     </div>

@@ -13,6 +13,14 @@ import faber12 from '../assets/faber-12.png';
 import faber13 from '../assets/faber-13.png';
 import faber14 from '../assets/faber-14.png';
 
+interface IntroContent {
+  introTitle: string;
+  introText: string;
+}
+interface OfferContent {
+  offerTitle: string;
+  offerText: string;
+}
 interface Items {
   id: number;
   image: string;
@@ -24,10 +32,24 @@ interface ServiceCategories {
   service: string;
 }
 interface Data {
+  introContent: IntroContent;
+  offerContent: OfferContent;
+  headers: string[];
   serviceCategories: ServiceCategories[];
   items: Items[];
 }
 export const data: Data = {
+  introContent: {
+    introTitle: 'Welcome To Our Workshop.',
+    introText:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor tortor eget velit porttitor, vel tincidunt ipsum rhoncus. Sed a augue eu eros vulputate rhoncus at et enim. Aenean accumsan ac risus quis placerat. Curabitur nec pellentesque sem. Integer facilisis augue odio, et interdum erat efficitur at. Ut risus velit.',
+  },
+  offerContent: {
+    offerTitle: 'what we do',
+    offerText:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor tortor eget velit porttitor, vel tincidunt ipsum rhoncus. Sed a augue eu eros vulputate rhoncus at et enim. Aenean accumsan ac risus quis placerat. Curabitur nec pellentesque sem. Integer facilisis augue odio, et interdum erat efficitur at. Ut risus velit.',
+  },
+  headers: ['oferta', 'galeria', 'kontakt'],
   serviceCategories: [
     {
       id: 1,
@@ -75,7 +97,7 @@ export const data: Data = {
       id: 3,
       image: faber3,
       img_description: 'faber3',
-      category: 'service-1',
+      category: 'service-6',
     },
     {
       id: 4,
@@ -93,7 +115,7 @@ export const data: Data = {
       id: 6,
       image: faber6,
       img_description: 'faber6',
-      category: 'service-2',
+      category: 'service-7',
     },
     {
       id: 7,
@@ -141,7 +163,7 @@ export const data: Data = {
       id: 14,
       image: faber14,
       img_description: 'faber14',
-      category: 'service-6',
+      category: 'service-7',
     },
   ],
 };

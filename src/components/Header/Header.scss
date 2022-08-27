@@ -1,0 +1,31 @@
+@import '../../styles/settings.scss';
+
+.header-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  img {
+    height: 300px;
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+  }
+  h1 {
+    position: absolute;
+    color: $light;
+    margin: 0 80px;
+    text-transform: capitalize;
+    font-size: $text-hero;
+    font-weight: 400;
+    // position: relative;
+    &::before {
+      content: '';
+      width: 60px;
+      height: 2px;
+      background-color: $orange;
+      position: absolute;
+      top: 50px;
+      transform: translate(50%, 50%);
+    }
+  }
+}
