@@ -32,13 +32,16 @@ interface ServiceCategories {
   service: string;
 }
 interface Data {
+  status: 'idle' | 'loading' | 'failed';
   introContent: IntroContent;
   offerContent: OfferContent;
   headers: string[];
   serviceCategories: ServiceCategories[];
   items: Items[];
+  loadedGallery: Items[] | null;
 }
 export const data: Data = {
+  status: 'idle',
   introContent: {
     introTitle: 'Welcome To Our Workshop.',
     introText:
@@ -166,4 +169,5 @@ export const data: Data = {
       category: 'service-7',
     },
   ],
+  loadedGallery: null,
 };
