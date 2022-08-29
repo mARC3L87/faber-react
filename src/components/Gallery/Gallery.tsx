@@ -19,7 +19,6 @@ const Gallery = () => {
     { id: 8, service: 'wszystko' },
     ...data.serviceCategories,
   ];
-
   return (
     <div>
       <Header headerImage={headerImage} headerText={headerText} />
