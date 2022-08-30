@@ -2,7 +2,6 @@
 
 .service-container {
   display: flex;
-  margin: 50px 80px;
   justify-content: space-between;
   gap: 30px;
   ul {
@@ -47,7 +46,6 @@
 .service-description-container {
   display: flex;
   flex-direction: row;
-  margin: 50px 80px;
   gap: 30px;
   .service-contact {
     display: flex;

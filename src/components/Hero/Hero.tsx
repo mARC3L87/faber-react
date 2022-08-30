@@ -4,7 +4,7 @@ import faber1 from '../../assets/faber-2.png';
 
 const Hero = () => {
   return (
-    <section className='hero-container'>
+    <header className='hero-container'>
       <img src={faber1} alt='hero-img' />
       <div className='hero-content'>
         <h1>Quality Wooden Products</h1>
@@ -18,7 +18,7 @@ const Hero = () => {
           Oferta
         </Link>
       </div>
-    </section>
+    </header>
   );
 };
 

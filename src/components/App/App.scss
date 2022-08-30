@@ -21,7 +21,10 @@ h6,
 p {
   font-family: $text-font;
 }
-
+section {
+  max-width: 1200px;
+  margin: 80px auto;
+}
 .App {
   display: flex;
   flex-direction: column;

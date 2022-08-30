@@ -1,0 +1,82 @@
+@import '../../styles/settings.scss';
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  .form-wrapper {
+    display: flex;
+    gap: 10px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      justify-content: space-between;
+      .form-group {
+        display: flex;
+        gap: 10px;
+        input {
+          width: 100%;
+        }
+      }
+      input {
+        height: 40px;
+        outline: none;
+        border: 1px solid $grey;
+        padding: 5px;
+        &::placeholder {
+          font-family: $text-font;
+        }
+      }
+      textarea {
+        resize: none;
+        min-height: 200px;
+        width: 100%;
+        height: auto;
+        outline: none;
+        padding: 5px;
+        border: 1px solid $grey;
+        &::placeholder {
+          font-family: $text-font;
+        }
+      }
+      .btn-send {
+        width: 150px;
+        color: $orange;
+        background-color: $light;
+        border: 2px solid $orange;
+        border-radius: 20px;
+        font-family: $text-font;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color, color 200ms;
+        &:hover {
+          background-color: $orange;
+          color: $light;
+        }
+      }
+    }
+    .map-container {
+      display: flex;
+      flex: 1;
+      .map {
+        width: 100%;
+        object-fit: cover;
+        height: 350px;
+        border: 1px solid $grey;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .form-wrapper {
+    flex-direction: column;
+  }
+  .form-group {
+    flex-direction: column;
+  }
+  .btn-send {
+    margin: auto;
+  }
+}
