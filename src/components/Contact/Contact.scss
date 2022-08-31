@@ -1,6 +1,6 @@
 @import '../../styles/settings.scss';
 
-.contact-container {
+.contact-form-container {
   display: flex;
   flex-direction: column;
   .form-wrapper {
@@ -67,6 +67,10 @@
       }
     }
   }
+}
+
+.address-section {
+  background-color: $orange;
 }
 
 @media screen and (max-width: 992px) {

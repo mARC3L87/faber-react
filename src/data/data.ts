@@ -13,6 +13,13 @@ import faber12 from '../assets/faber-12.png';
 import faber13 from '../assets/faber-13.png';
 import faber14 from '../assets/faber-14.png';
 
+interface Address {
+  phone: string;
+  email: string;
+  city: string;
+  postal: string;
+  street: string;
+}
 interface IntroContent {
   introTitle: string;
   introText: string;
@@ -33,6 +40,8 @@ interface ServiceCategories {
 }
 interface Data {
   status: 'idle' | 'loading' | 'failed';
+  address: Address;
+  map: string;
   introContent: IntroContent;
   offerContent: OfferContent;
   headers: string[];
@@ -42,6 +51,14 @@ interface Data {
 }
 export const data: Data = {
   status: 'idle',
+  address: {
+    phone: '+48 123 456 789',
+    email: 'email@mail.com',
+    city: 'Janikowo',
+    postal: '88-160',
+    street: ' Przyjezierna 13',
+  },
+  map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2413.815079180016!2d18.0969601!3d52.77160909999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47035927e406a19b%3A0x347e5a6074771130!2sUs%C5%82ugi%20Cmentarne%20-%20Jaros%C5%82aw%20%C5%81ukomski%20-%20Faber!5e0!3m2!1spl!2spl!4v1661883280340!5m2!1spl!2spl',
   introContent: {
     introTitle: 'Welcome To Our Workshop.',
     introText:
