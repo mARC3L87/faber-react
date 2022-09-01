@@ -1,3 +1,4 @@
+import { Data } from './DataInterface';
 import faber1 from '../assets/faber-1.png';
 import faber2 from '../assets/faber-2.png';
 import faber3 from '../assets/faber-3.png';
@@ -13,42 +14,6 @@ import faber12 from '../assets/faber-12.png';
 import faber13 from '../assets/faber-13.png';
 import faber14 from '../assets/faber-14.png';
 
-interface Address {
-  phone: string;
-  email: string;
-  city: string;
-  postal: string;
-  street: string;
-}
-interface IntroContent {
-  introTitle: string;
-  introText: string;
-}
-interface OfferContent {
-  offerTitle: string;
-  offerText: string;
-}
-interface Items {
-  id: number;
-  image: string;
-  img_description: string;
-  category: string;
-}
-interface ServiceCategories {
-  id: number;
-  service: string;
-}
-interface Data {
-  status: 'idle' | 'loading' | 'failed';
-  address: Address;
-  map: string;
-  introContent: IntroContent;
-  offerContent: OfferContent;
-  headers: string[];
-  serviceCategories: ServiceCategories[];
-  items: Items[];
-  loadedGallery: Items[] | null;
-}
 export const data: Data = {
   status: 'idle',
   address: {

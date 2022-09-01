@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
+import { FormDataTypes } from './ContactInterface';
 import Header from '../Header/Header';
 import Address from '../Address/Address';
 import emailjs from '@emailjs/browser';
@@ -16,12 +17,6 @@ const Contact = () => {
   const headerImage = data.items[9];
   const headerText = data.headers[2];
 
-  interface FormDataTypes {
-    username: string;
-    email: string;
-    subject: string;
-    message: string;
-  }
   const [formData, setFormData] = useState<FormDataTypes>({
     username: '',
     email: '',

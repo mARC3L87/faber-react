@@ -1,19 +1,6 @@
+import { ServiceCardProps } from './ServiceCardInterface';
 import { Link } from 'react-router-dom';
 import './ServiceCard.scss';
-
-interface Items {
-  id: number;
-  image: string;
-  img_description: string;
-  category: string;
-}
-interface ServiceCardProps {
-  items: Items[];
-  serviceCategory: {
-    id: number;
-    service: string;
-  };
-}
 
 const ServiceCard = ({ serviceCategory, items }: ServiceCardProps) => {
   const itemsProperties = items.find(

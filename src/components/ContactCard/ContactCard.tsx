@@ -1,12 +1,7 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ContactCardProps } from './ContactCardInterface';
 import './ContactCard.scss';
 
-interface ContactCardProps {
-  icon: IconProp;
-  title: string;
-  text: string;
-}
 const ContactCard = ({ icon, title, text }: ContactCardProps) => {
   return (
     <div className='contact-card'>
