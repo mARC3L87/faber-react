@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
-import { useAppSelector } from '../../app/hooks';
-import { selectData } from '../../features/dataSlice';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { selectData, showAlert, removeAlert } from '../../features/dataSlice';
 import { FormDataTypes } from './ContactInterface';
 import Header from '../Header/Header';
 import Address from '../Address/Address';
@@ -14,6 +14,9 @@ const Contact = () => {
     .REACT_APP_PUBLIC_KEY as string;
 
   const data = useAppSelector(selectData);
+  const alerts = data.alerts;
+  const dispatch = useAppDispatch();
+
   const headerImage = data.items[9];
   const headerText = data.headers[2];
 
@@ -34,25 +37,49 @@ const Contact = () => {
   ) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    dispatch(removeAlert([e.target.name].toString()));
   };
 
   const formSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (username === '' || subject === '' || message === '' || email === '') {
-      return;
+    if (username === '') {
+      dispatch(showAlert('username'));
+    } else {
+      dispatch(removeAlert('username'));
     }
-    if (formRef.current === null) {
-      return;
+    if (email === '') {
+      dispatch(showAlert('email'));
+    } else {
+      dispatch(removeAlert('email'));
+    }
+    if (subject === '') {
+      dispatch(showAlert('subject'));
+    } else {
+      dispatch(removeAlert('subject'));
+    }
+    if (message === '') {
+      dispatch(showAlert('message'));
+    } else {
+      dispatch(removeAlert('message'));
     }
 
-    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey).then(
-      (result) => {
-        console.log(result);
-      },
-      (error) => {
-        console.log(error.text);
+    if (alerts.email || alerts.message || alerts.subject || alerts.username) {
+      return;
+    } else {
+      if (formRef.current === null) {
+        return;
       }
-    );
+
+      emailjs.sendForm(serviceId, templateId, formRef.current, publicKey).then(
+        (result) => {
+          console.log(result);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    }
+
     console.log(formData);
   };
 
@@ -75,6 +102,9 @@ const Contact = () => {
                 value={username}
                 onChange={onInputChange}
               />
+              {alerts.username && (
+                <p className='label-paragraph'>Name required!</p>
+              )}
               <input
                 type='email'
                 name='email'
@@ -82,6 +112,9 @@ const Contact = () => {
                 value={email}
                 onChange={onInputChange}
               />
+              {alerts.email && (
+                <p className='label-paragraph --email'>E-mail required!</p>
+              )}
             </div>
             <input
               type='text'
@@ -90,12 +123,18 @@ const Contact = () => {
               value={subject}
               onChange={onInputChange}
             />
+            {alerts.subject && (
+              <p className='label-paragraph-subject'>Subject required!</p>
+            )}
             <textarea
               name='message'
               placeholder='Message'
               value={message}
               onChange={onInputChange}
             ></textarea>
+            {alerts.message && (
+              <p className='label-paragraph-subject'>Message required!</p>
+            )}
             <input type='submit' value='Send' className='btn btn-send' />
           </form>
           <div className='map-container'>

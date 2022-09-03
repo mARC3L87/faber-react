@@ -152,4 +152,10 @@ export const data: Data = {
     },
   ],
   loadedGallery: null,
+  alerts: {
+    username: false,
+    subject: false,
+    message: false,
+    email: false,
+  },
 };

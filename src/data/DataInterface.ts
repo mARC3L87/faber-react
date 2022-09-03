@@ -23,6 +23,13 @@ export interface ServiceCategories {
   id: number;
   service: string;
 }
+interface Fields {
+  username: boolean;
+  subject: boolean;
+  message: boolean;
+  email: boolean;
+}
+
 export interface Data {
   status: 'idle' | 'loading' | 'failed';
   address: Address;
@@ -33,4 +40,5 @@ export interface Data {
   serviceCategories: ServiceCategories[];
   items: Items[];
   loadedGallery: Items[] | null;
+  alerts: Fields;
 }

@@ -19,10 +19,29 @@ export const dataSlice = createSlice({
         state.loadedGallery = state.items;
       }
     },
+    showAlert: (state, action: PayloadAction<string>) => {
+      const alert = state.alerts;
+      Object.keys(alert).map((key) => {
+        if (key === action.payload) {
+          alert[key as keyof typeof alert] = true;
+        }
+        return alert;
+      });
+    },
+    removeAlert: (state, action: PayloadAction<string>) => {
+      const alert = state.alerts;
+      Object.keys(alert).map((key) => {
+        if (key === action.payload) {
+          alert[key as keyof typeof alert] = false;
+        }
+        return alert;
+      });
+    },
   },
 });
 
 export const selectData = (state: RootState) => state.dataState;
-export const { filterByCategory, fetchGallery } = dataSlice.actions;
+export const { filterByCategory, fetchGallery, showAlert, removeAlert } =
+  dataSlice.actions;
 
 export default dataSlice.reducer;
