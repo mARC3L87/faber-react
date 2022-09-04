@@ -70,3 +70,19 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  .service-container {
+    flex-direction: column;
+    ul {
+      flex: auto;
+    }
+    img {
+      flex: auto;
+    }
+  }
+  .service-description-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

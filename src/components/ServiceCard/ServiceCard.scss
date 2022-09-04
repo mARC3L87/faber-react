@@ -30,3 +30,9 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .card-wrapper {
+    margin-right: 0;
+  }
+}

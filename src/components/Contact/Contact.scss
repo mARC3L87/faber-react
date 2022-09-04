@@ -88,13 +88,15 @@
 }
 
 @media screen and (max-width: 992px) {
-  .form-wrapper {
-    flex-direction: column;
-  }
-  .form-group {
-    flex-direction: column;
-  }
-  .btn-send {
-    margin: auto;
+  .contact-form-container {
+    .form-wrapper {
+      flex-direction: column;
+    }
+    .form-group {
+      flex-direction: column;
+    }
+    .btn-send {
+      margin: auto;
+    }
   }
 }

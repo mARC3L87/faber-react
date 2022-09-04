@@ -11,7 +11,6 @@ const Navigation = () => {
   const onOpen = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.preventDefault();
     setOpen(!open);
-    console.log('click');
   };
   return (
     <div className='nav-container'>

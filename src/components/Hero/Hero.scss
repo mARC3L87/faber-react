@@ -52,3 +52,29 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .hero-container {
+    img {
+      height: 350px;
+    }
+    .hero-content {
+      margin: 0 30px;
+      h1 {
+        font-size: $text-hero-small;
+        line-height: 1.2;
+      }
+      p {
+        font-size: $text-regular-small;
+        line-height: 1.2;
+      }
+      .btn-offer {
+        font-size: $text-regular-small;
+        height: 40px;
+        width: 120px;
+        padding: 8px 0;
+        font-weight: 400;
+      }
+    }
+  }
+}

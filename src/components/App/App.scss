@@ -33,3 +33,9 @@ section {
     flex-grow: 1;
   }
 }
+
+@media screen and (max-width: 992px) {
+  section {
+    margin: 80px 30px;
+  }
+}

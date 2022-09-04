@@ -10,3 +10,12 @@
   flex-wrap: wrap;
   justify-content: flex-start;
 }
+
+@media screen and (max-width: 768px) {
+  .offer-container {
+    margin: 0 30px;
+  }
+}
+.offer-gallery-container {
+  justify-content: center;
+}

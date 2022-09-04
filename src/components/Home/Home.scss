@@ -20,6 +20,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
   }
   .btn-fullOffer {
     margin-top: 30px;
@@ -90,6 +91,12 @@
 
 @media screen and (max-width: 992px) {
   .intro-gallery {
+    .intro-img-first {
+      margin: 0 30px;
+      img {
+        height: 400px;
+      }
+    }
     .intro-img-second {
       display: none;
     }
