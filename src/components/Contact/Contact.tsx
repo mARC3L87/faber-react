@@ -63,7 +63,7 @@ const Contact = () => {
       dispatch(removeAlert('message'));
     }
 
-    if (alerts.email || alerts.message || alerts.subject || alerts.username) {
+    if (email === '' || message === '' || subject === '' || username === '') {
       return;
     } else {
       if (formRef.current === null) {

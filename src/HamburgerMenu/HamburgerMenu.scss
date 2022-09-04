@@ -1,0 +1,49 @@
+@import '../styles/settings.scss';
+
+.hamburger-container {
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  max-width: 300px;
+  top: 0;
+  right: 0;
+  // transform: translateX(300px);
+  border-radius: 10px;
+  .close {
+    color: $light;
+    font-size: $text-regular;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  .hamburger-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    list-style-type: none;
+    .nav-link {
+      text-decoration: none;
+      li {
+        font-family: $text-font;
+        font-size: $text-regular;
+        color: $light;
+        margin: 30px 0;
+        border-bottom: 1px solid $light;
+        text-align: center;
+      }
+    }
+  }
+}
+// .slideIn {
+//   transform: translateX(0);
+//   transition: transform ease-in-out;
+// }
+// .slideOut {
+//   transform: translateX(100%);
+//   transition: transform ease-in-out;
+// }
