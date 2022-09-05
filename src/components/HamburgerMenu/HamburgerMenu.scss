@@ -1,4 +1,4 @@
-@import '../styles/settings.scss';
+@import '../../styles/settings.scss';
 
 .hamburger-container {
   background-color: $dark;
@@ -9,7 +9,6 @@
   position: absolute;
   z-index: 1;
   width: 100%;
-  max-width: 300px;
   top: 0;
   right: 0;
   // transform: translateX(300px);

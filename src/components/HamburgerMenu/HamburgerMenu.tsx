@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
@@ -8,19 +9,33 @@ interface HamburgerTypes {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const HamburgerMenu = ({ open, setOpen }: HamburgerTypes) => {
-  const onClose = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
-    e.preventDefault();
-    setOpen(!open);
-    console.log('click');
-  };
+  useEffect(() => {
+    const onClose = (e: MouseEvent) => {
+      if (ref.current?.contains(e.target as HTMLBodyElement)) {
+        return;
+      } else {
+        setOpen(!open);
+      }
+    };
+    document.body.addEventListener('click', onClose, { capture: true });
+    return () => {
+      document.body.removeEventListener('click', onClose);
+    };
+  }, [open, setOpen]);
+
+  const ref = useRef<HTMLDivElement | null>(null);
+
   return (
-    <div className={`hamburger-container ${open ? 'slideIn' : 'slideOut'}`}>
+    <div
+      ref={ref}
+      className={`hamburger-container ${open ? 'slideIn' : 'slideOut'}`}
+    >
       <FontAwesomeIcon
-        onClick={(e) => onClose(e)}
+        onClick={() => setOpen(!open)}
         className='close'
         icon={faX}
       />
-      <ul className='hamburger-list'>
+      <ul onClick={() => setOpen(!open)} className='hamburger-list'>
         <NavLink to='/' className='nav-link'>
           <li>Home</li>
         </NavLink>
