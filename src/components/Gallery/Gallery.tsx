@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
 import { filterByCategory, fetchGallery } from '../../features/dataSlice';
@@ -6,6 +6,8 @@ import Header from '../Header/Header';
 import './Gallery.scss';
 
 const Gallery = () => {
+  const [select, setSelect] = useState<string>('wszystko');
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -19,6 +21,15 @@ const Gallery = () => {
     { id: 8, service: 'wszystko' },
     ...data.serviceCategories,
   ];
+
+  const onClickCategory = (
+    e: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    category: string
+  ) => {
+    setSelect(e.currentTarget.innerText.toLowerCase());
+
+    dispatch(filterByCategory(category));
+  };
   return (
     <div>
       <Header headerImage={headerImage} headerText={headerText} />
@@ -26,7 +37,8 @@ const Gallery = () => {
         <ul>
           {searchCategories.map((category) => (
             <li
-              onClick={() => dispatch(filterByCategory(category.service))}
+              className={select === category.service ? 'active' : ''}
+              onClick={(e) => onClickCategory(e, category.service)}
               key={category.id}
             >
               {category.service}

@@ -11,9 +11,7 @@ interface HamburgerTypes {
 const HamburgerMenu = ({ open, setOpen }: HamburgerTypes) => {
   useEffect(() => {
     const onClose = (e: MouseEvent) => {
-      if (ref.current?.contains(e.target as HTMLBodyElement)) {
-        return;
-      } else {
+      if (!ref.current?.contains(e.target as HTMLBodyElement)) {
         setOpen(!open);
       }
     };
