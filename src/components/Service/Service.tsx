@@ -1,12 +1,27 @@
+import { useState, useEffect } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
+import Spinner from '../Spinner/Spinner';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Service.scss';
 
 const Service = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const time = setTimeout(() => {
+      if (loading) {
+        setLoading(false);
+      }
+    }, 500);
+    return () => {
+      clearTimeout(time);
+    };
+  }, [loading]);
+
   const params = useParams();
   const data = useAppSelector(selectData);
   const headerText = params.serviceId?.replace('-', ' ');
@@ -14,18 +29,26 @@ const Service = () => {
   const servicePhoto = data.items.filter(
     (item) => item.category === params.serviceId
   );
+  if (loading) {
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  }
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      transition={{ duration: 0.1 }}
     >
       <Header headerText={headerText} headerImage={headerImage} />
       <section className='service-container'>
         <ul>
           {data.serviceCategories.map((serviceName) => (
             <Link
+              onClick={() => setLoading(!loading)}
               className='service-link'
               to={`/oferta/${serviceName.service}`}
             >
