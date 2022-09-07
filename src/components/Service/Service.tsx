@@ -3,6 +3,7 @@ import { selectData } from '../../features/dataSlice';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './Service.scss';
 
 const Service = () => {
@@ -14,7 +15,12 @@ const Service = () => {
     (item) => item.category === params.serviceId
   );
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
       <Header headerText={headerText} headerImage={headerImage} />
       <section className='service-container'>
         <ul>
@@ -64,7 +70,7 @@ const Service = () => {
           </p>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

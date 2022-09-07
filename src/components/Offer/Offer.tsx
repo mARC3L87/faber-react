@@ -2,6 +2,7 @@ import { useAppSelector } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
 import Header from '../Header/Header';
 import ServiceCard from '../ServiceCard/ServiceCard';
+import { motion } from 'framer-motion';
 import './Offer.scss';
 
 const Offer = () => {
@@ -11,7 +12,12 @@ const Offer = () => {
   const dataImages = data.items.map((item) => item);
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
       <Header headerText={headerText} headerImage={headerImage} />
       <section className='offer-container'>
         <h1>{data.offerContent.offerTitle}</h1>
@@ -24,7 +30,7 @@ const Offer = () => {
           </div>
         ))}
       </section>
-    </div>
+    </motion.div>
   );
 };
 

@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
 import { filterByCategory, fetchGallery } from '../../features/dataSlice';
 import Header from '../Header/Header';
+import { motion } from 'framer-motion';
 import './Gallery.scss';
 
 const Gallery = () => {
@@ -31,7 +32,12 @@ const Gallery = () => {
     dispatch(filterByCategory(category));
   };
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
       <Header headerImage={headerImage} headerText={headerText} />
       <section className='search-container'>
         <ul>
@@ -53,7 +59,7 @@ const Gallery = () => {
           </div>
         ))}
       </section>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,9 +1,9 @@
-import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
 import Hero from '../Hero/Hero';
 import ServiceCard from '../ServiceCard/ServiceCard';
+import { motion } from 'framer-motion';
 import './Home.scss';
 
 const Home = () => {
@@ -12,7 +12,12 @@ const Home = () => {
   const introText = data.introContent.introText;
   const dataImages = data.items.map((item) => item);
   return (
-    <Fragment>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
       <header>
         <Hero />
       </header>
@@ -55,7 +60,7 @@ const Home = () => {
           />
         </div>
       </section>
-    </Fragment>
+    </motion.div>
   );
 };
 
