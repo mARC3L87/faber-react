@@ -10,6 +10,7 @@ import './Gallery.scss';
 const Gallery = () => {
   const [select, setSelect] = useState<string>('wszystko');
   const [modal, setModal] = useState<boolean>(false);
+  const [imageId, setImageId] = useState<number | null>(null);
 
   const dispatch = useAppDispatch();
 
@@ -33,6 +34,14 @@ const Gallery = () => {
 
     dispatch(filterByCategory(category));
   };
+
+  const onClickFullImage = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+    id: number
+  ) => {
+    setModal(!modal);
+    setImageId(id);
+  };
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -41,7 +50,11 @@ const Gallery = () => {
     >
       {modal && (
         <div className='modal'>
-          <FullscreenImage setModal={setModal} modal={modal} />
+          <FullscreenImage
+            imageId={imageId}
+            setModal={setModal}
+            modal={modal}
+          />
         </div>
       )}
 
@@ -63,7 +76,7 @@ const Gallery = () => {
         {data.loadedGallery?.map((item) => (
           <div className='image-wrapper' key={item.id}>
             <img
-              onClick={() => setModal(!modal)}
+              onClick={(e) => onClickFullImage(e, item.id)}
               src={item.image}
               alt={item.img_description}
             />

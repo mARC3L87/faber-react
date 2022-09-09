@@ -7,9 +7,37 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: saturate(180%) blur(10px);
-  .close {
-    // width: 60px;
-    height: 60px;
-    color: wheat;
+  position: relative;
+
+  .fullscreen-image {
+    max-width: 500px;
+    max-height: 500px;
+    width: 100%;
+    position: relative;
+    top: 300px;
+    .close {
+      // width: 60px;
+      height: 60px;
+      color: $light;
+      top: -75px;
+      position: absolute;
+      right: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+      position: absolute;
+    }
+    .btn-wrapper {
+      justify-content: space-between;
+      width: 100%;
+      display: flex;
+      position: absolute;
+      height: 100%;
+      align-items: center;
+    }
   }
 }
