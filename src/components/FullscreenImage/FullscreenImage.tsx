@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX } from '@fortawesome/free-solid-svg-icons';
+import {
+  faX,
+  faAnglesLeft,
+  faAnglesRight,
+} from '@fortawesome/free-solid-svg-icons';
 import './FullscreenImage.scss';
 
 interface FullscreenProps {
@@ -58,12 +62,16 @@ const FullscreenImage = ({ setModal, modal, imageId }: FullscreenProps) => {
         }
 
         <div className='btn-wrapper'>
-          <button onClick={onLeftClick} className='btn btn-left'>
-            left
-          </button>
-          <button onClick={onRightClick} className='btn btn-right'>
-            right
-          </button>
+          <FontAwesomeIcon
+            icon={faAnglesLeft}
+            onClick={onLeftClick}
+            className='btn btn-left'
+          />
+          <FontAwesomeIcon
+            icon={faAnglesRight}
+            onClick={onRightClick}
+            className='btn btn-right'
+          />
         </div>
       </div>
     </div>
