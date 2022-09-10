@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,13 +12,31 @@ interface FullscreenProps {
 }
 
 const FullscreenImage = ({ setModal, modal, imageId }: FullscreenProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const galleryData = useAppSelector(selectData).loadedGallery;
+  const clickedImage = galleryData?.find((image) => image.id === imageId)!;
 
-  const clickedImage = galleryData?.find((image) => image.id === imageId);
-  console.log(clickedImage);
-  const onRightClick = () => {};
+  useEffect(() => {
+    const findIndex = galleryData?.indexOf(clickedImage);
+    if (typeof findIndex === 'number') {
+      if (clickedImage) {
+        setCurrentIndex(findIndex);
+      }
+    }
+  }, [clickedImage, galleryData]);
+
+  const onRightClick = () => {
+    currentIndex === galleryData?.length! - 1
+      ? setCurrentIndex(0)
+      : setCurrentIndex(currentIndex + 1);
+  };
+
+  const onLeftClick = () => {
+    currentIndex === 0
+      ? setCurrentIndex(galleryData?.length! - 1)
+      : setCurrentIndex(currentIndex - 1);
+  };
 
   return (
     <div className='fullscreen-container'>
@@ -28,10 +46,22 @@ const FullscreenImage = ({ setModal, modal, imageId }: FullscreenProps) => {
           onClick={() => setModal(!modal)}
           icon={faX}
         />
-        <img src={clickedImage?.image} alt={clickedImage?.img_description} />
+        {clickedImage && (
+          <img src={clickedImage?.image} alt={clickedImage?.img_description} />
+        )}
+
+        {
+          <img
+            src={galleryData?.[currentIndex].image}
+            alt={galleryData?.[currentIndex].img_description}
+          />
+        }
+
         <div className='btn-wrapper'>
-          <button className='btn btn-left'>left</button>
-          <button onClick={() => onRightClick()} className='btn btn-right'>
+          <button onClick={onLeftClick} className='btn btn-left'>
+            left
+          </button>
+          <button onClick={onRightClick} className='btn btn-right'>
             right
           </button>
         </div>
