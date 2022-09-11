@@ -6,6 +6,7 @@ import Gallery from '../Gallery/Gallery';
 import Contact from '../Contact/Contact';
 import Service from '../Service/Service';
 import OfferLayout from '../Offer/OfferLayout';
+import FooterLinks from '../FooterLinks/FooterLinks';
 import Footer from '../Footer/Footer';
 import { AnimatePresence } from 'framer-motion';
 import './App.scss';
@@ -27,6 +28,7 @@ const App = () => {
           </Routes>
         </AnimatePresence>
       </main>
+      <FooterLinks />
       <Footer />
     </div>
   );

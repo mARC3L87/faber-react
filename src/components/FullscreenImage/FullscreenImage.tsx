@@ -22,10 +22,10 @@ const FullscreenImage = ({ setModal, modal, imageId }: FullscreenProps) => {
   const clickedImage = galleryData?.find((image) => image.id === imageId)!;
 
   useEffect(() => {
-    const findIndex = galleryData?.indexOf(clickedImage);
-    if (typeof findIndex === 'number') {
+    const findFirstIndex = galleryData?.indexOf(clickedImage);
+    if (typeof findFirstIndex === 'number') {
       if (clickedImage) {
-        setCurrentIndex(findIndex);
+        setCurrentIndex(findFirstIndex);
       }
     }
   }, [clickedImage, galleryData]);

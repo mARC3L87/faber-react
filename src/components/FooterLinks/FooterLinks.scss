@@ -1,0 +1,43 @@
+@import '../../styles/settings.scss';
+
+.footer-links-container {
+  background: $light-dark;
+  .footer-links-wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    h2 {
+      color: $light;
+    }
+    ul {
+      padding: 0;
+      list-style-type: none;
+      margin: 0;
+      li {
+        color: $light;
+        margin: 10px 0;
+        font-family: $text-font;
+        line-height: 1;
+        text-transform: capitalize;
+        &:hover {
+          color: $orange;
+        }
+      }
+    }
+  }
+  .logo {
+    p {
+      color: $light;
+      margin: 10px 0;
+      line-height: 1;
+    }
+  }
+}
