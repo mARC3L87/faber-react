@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectData } from '../../features/dataSlice';
+import { FullscreenProps } from './FullscreenImageInterface';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faX,
@@ -8,12 +9,6 @@ import {
   faAnglesRight,
 } from '@fortawesome/free-solid-svg-icons';
 import './FullscreenImage.scss';
-
-interface FullscreenProps {
-  modal: boolean;
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  imageId: number | null;
-}
 
 const FullscreenImage = ({ setModal, modal, imageId }: FullscreenProps) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);

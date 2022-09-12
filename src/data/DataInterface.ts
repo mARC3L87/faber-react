@@ -29,9 +29,14 @@ interface Fields {
   message: boolean;
   email: boolean;
 }
+export interface Message {
+  type: string;
+  msg: string;
+}
 
 export interface Data {
   status: 'idle' | 'loading' | 'failed';
+  loading: boolean;
   address: Address;
   map: string;
   introContent: IntroContent;
@@ -41,4 +46,5 @@ export interface Data {
   items: Items[];
   loadedGallery: Items[] | null;
   alerts: Fields;
+  message: Message;
 }

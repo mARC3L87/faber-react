@@ -1,0 +1,17 @@
+@import '../../styles/settings.scss';
+
+.message {
+  border: 1px solid $grey;
+  border-radius: 10px;
+  width: 150px;
+  .message-text {
+    color: $light;
+    text-align: center;
+  }
+}
+.message-danger {
+  background: $red;
+}
+.message-success {
+  background: $success;
+}

@@ -16,6 +16,7 @@ import faber14 from '../assets/faber-14.png';
 
 export const data: Data = {
   status: 'idle',
+  loading: false,
   address: {
     phone: '+48 123 456 789',
     email: 'email@mail.com',
@@ -157,5 +158,9 @@ export const data: Data = {
     subject: false,
     message: false,
     email: false,
+  },
+  message: {
+    type: '',
+    msg: '',
   },
 };

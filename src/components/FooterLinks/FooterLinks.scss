@@ -21,14 +21,17 @@
       padding: 0;
       list-style-type: none;
       margin: 0;
-      li {
-        color: $light;
-        margin: 10px 0;
-        font-family: $text-font;
-        line-height: 1;
-        text-transform: capitalize;
-        &:hover {
-          color: $orange;
+      a {
+        text-decoration: none;
+        li {
+          color: $light;
+          margin: 10px 0;
+          font-family: $text-font;
+          line-height: 1;
+          text-transform: capitalize;
+          &:hover {
+            color: $orange;
+          }
         }
       }
     }

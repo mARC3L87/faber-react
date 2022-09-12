@@ -1,9 +1,17 @@
 import { useState, useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { selectData, showAlert, removeAlert } from '../../features/dataSlice';
+import {
+  selectData,
+  showAlert,
+  removeAlert,
+  success,
+  removeSuccess,
+  setMessage,
+} from '../../features/dataSlice';
 import { FormDataTypes } from './ContactInterface';
 import Header from '../Header/Header';
 import Address from '../Address/Address';
+import Message from '../Message/Message';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import './Contact.scss';
@@ -16,6 +24,7 @@ const Contact = () => {
 
   const data = useAppSelector(selectData);
   const alerts = data.alerts;
+  const loading = data.loading;
   const dispatch = useAppDispatch();
 
   const headerImage = data.items[9];
@@ -70,18 +79,24 @@ const Contact = () => {
       if (formRef.current === null) {
         return;
       }
-
+      // if (loading) {
+      //   dispatch(setMessage({ type: 'success', msg: 'Message send.' }));
+      // }
       emailjs.sendForm(serviceId, templateId, formRef.current, publicKey).then(
         (result) => {
           console.log(result);
+          dispatch(success());
+          setFormData({ username: '', email: '', subject: '', message: '' });
+          setTimeout(() => {
+            dispatch(removeSuccess());
+          }, 5000);
+          console.log(formData);
         },
         (error) => {
           console.log(error.text);
         }
       );
     }
-
-    console.log(formData);
   };
 
   return (
@@ -92,6 +107,10 @@ const Contact = () => {
     >
       <Header headerImage={headerImage} headerText={headerText} />
       <section className='contact-form-container'>
+        {loading &&
+          dispatch(setMessage({ type: 'success', msg: 'Message send.' })) && (
+            <Message />
+          )}
         <h1>Get in touch</h1>
         <p>
           Osed quia consequuntur magni dolores eos qui ratione voluptatem sequi

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../app/store';
+import { Message } from '../data/DataInterface';
 import { data } from '../data/data';
 
 const initialState = data;
@@ -37,11 +38,28 @@ export const dataSlice = createSlice({
         return alert;
       });
     },
+    success: (state) => {
+      state.loading = true;
+    },
+    removeSuccess: (state) => {
+      state.loading = false;
+    },
+    setMessage: (state, action: PayloadAction<Message>) => {
+      state.message.type = action.payload.type;
+      state.message.msg = action.payload.msg;
+    },
   },
 });
 
 export const selectData = (state: RootState) => state.dataState;
-export const { filterByCategory, fetchGallery, showAlert, removeAlert } =
-  dataSlice.actions;
+export const {
+  filterByCategory,
+  fetchGallery,
+  showAlert,
+  removeAlert,
+  success,
+  removeSuccess,
+  setMessage,
+} = dataSlice.actions;
 
 export default dataSlice.reducer;

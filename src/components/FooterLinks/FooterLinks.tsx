@@ -40,7 +40,7 @@ const FooterLinks = () => {
           <h2>Usługi</h2>
           <ul>
             {serviceCategories.map((serviceName) => (
-              <Link to={`/oferta/${serviceName.service}`}>
+              <Link key={serviceName.id} to={`/oferta/${serviceName.service}`}>
                 <li>{serviceName.service.replace('-', ' ')}</li>
               </Link>
             ))}
