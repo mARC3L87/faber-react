@@ -48,6 +48,7 @@ const Service = () => {
         <ul>
           {data.serviceCategories.map((serviceName) => (
             <Link
+              key={serviceName.id}
               onClick={() => setLoading(!loading)}
               className='service-link'
               to={`/oferta/${serviceName.service}`}
@@ -56,7 +57,6 @@ const Service = () => {
                 className={`service-list ${
                   serviceName.service === params.serviceId ? 'active' : ''
                 }`}
-                key={serviceName.id}
               >
                 {serviceName.service.replace('-', ' ')}
               </li>

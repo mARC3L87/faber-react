@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
   selectData,
@@ -17,18 +17,10 @@ import { motion } from 'framer-motion';
 import './Contact.scss';
 
 const Contact = () => {
-  const serviceId: string = process.env.REACT_APP_SERVICE_ID as string;
-  const templateId: string = process.env.REACT_APP_TEMPLATE_ID as string;
-  const publicKey: string | undefined = process.env
-    .REACT_APP_PUBLIC_KEY as string;
-
   const data = useAppSelector(selectData);
   const alerts = data.alerts;
   const loading = data.loading;
   const dispatch = useAppDispatch();
-
-  const headerImage = data.items[9];
-  const headerText = data.headers[2];
 
   const [formData, setFormData] = useState<FormDataTypes>({
     username: '',
@@ -39,6 +31,18 @@ const Contact = () => {
   const { username, email, subject, message } = formData;
 
   const formRef = useRef<HTMLFormElement | null>(null);
+
+  useEffect(() => {
+    dispatch(setMessage({ type: 'success', msg: 'Message send.' }));
+  }, [dispatch]);
+
+  const serviceId: string = process.env.REACT_APP_SERVICE_ID as string;
+  const templateId: string = process.env.REACT_APP_TEMPLATE_ID as string;
+  const publicKey: string | undefined = process.env
+    .REACT_APP_PUBLIC_KEY as string;
+
+  const headerImage = data.items[9];
+  const headerText = data.headers[2];
 
   const onInputChange = (
     e:
@@ -107,10 +111,7 @@ const Contact = () => {
     >
       <Header headerImage={headerImage} headerText={headerText} />
       <section className='contact-form-container'>
-        {loading &&
-          dispatch(setMessage({ type: 'success', msg: 'Message send.' })) && (
-            <Message />
-          )}
+        {loading && <Message />}
         <h1>Get in touch</h1>
         <p>
           Osed quia consequuntur magni dolores eos qui ratione voluptatem sequi
